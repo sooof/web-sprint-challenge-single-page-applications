@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function Delivering(props) {
-  const { text } = props
+export default function Delivering() {
+  
 
   return (
     <div>
