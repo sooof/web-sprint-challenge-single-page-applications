@@ -1,8 +1,30 @@
-import React from "react";
+
+import React, { useState, useEffect } from 'react'
 import {Route, Link, Switch} from 'react-router-dom'
 import './App.css'
+import Home from './components/Home'
+import ItemsList from './components/ItemsList'
+import BuildPizza from './components/BuildPizza'
+// Dummy data
+import data from './data'
 
-const App = () => {
+function fetchStock() {
+  // fetchStock simulates getting data through axios.get(<URL>)
+  return Promise.resolve({ success: true, data })
+}
+
+
+export default function App(props){
+  const [stock, setStock] = useState([])
+
+
+  useEffect(() => {
+    fetchStock().then(res => setStock(res.data))
+  }, [])
+  
+  console.log("App stock = ", stock)
+  
+
   return (
     <div className='App'>
       <nav className='App-header'>
@@ -13,11 +35,18 @@ const App = () => {
             <Link to='/items-list'>Help</Link>
           </div>
       </nav>
-
+    
       <Switch>
         <Route exact path='/'>
-          {/* <Home/> */}
+          <Home stock={stock}/>
         </Route>
+        {/* <Route path={'/items-list/:id'}>
+            <Item items={stock} />
+        </Route> */}
+        <Route path='/buildYouPizza'> 
+            <BuildPizza />
+        </Route>
+
         <Route>
 
         </Route>
@@ -26,4 +55,3 @@ const App = () => {
  
   );
 };
-export default App;
