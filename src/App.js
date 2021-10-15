@@ -5,6 +5,7 @@ import './App.css'
 import Home from './components/Home'
 import ItemsList from './components/ItemsList'
 import BuildPizza from './components/BuildPizza'
+import Delivering from './components/Delivering'
 // Dummy data
 import data from './data'
 
@@ -45,10 +46,10 @@ export default function App(props){
         </Route> */}
         <Route path='/buildYouPizza'> 
             <BuildPizza />
-        </Route>
+        </Route >
 
-        <Route>
-
+        <Route path='/delivering'>
+          <Delivering />
         </Route>
       </Switch>
     </div>
