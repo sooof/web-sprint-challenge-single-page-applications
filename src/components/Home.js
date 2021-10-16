@@ -8,7 +8,7 @@ export default function Home(props) {
   const history = useHistory();
 
   const routeToShop = () => {
-    history.push("./buildYouPizza")
+    history.push("./pizza")
   }
 
   return (
@@ -17,7 +17,7 @@ export default function Home(props) {
         <section id="homeBg" class="bg-img">
             <div>
                 <h1>Your favorite, delivered while coding </h1>
-                <button onClick={routeToShop} className='md-button' >Pizza ?</button>
+                <button onClick={routeToShop} className='md-button' >Order Pizza</button>
             </div>
         </section>
 

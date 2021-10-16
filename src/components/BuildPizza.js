@@ -1,21 +1,35 @@
 import React from 'react'
-import {Route, Link, Switch} from 'react-router-dom'
 import { useHistory } from 'react-router-dom';
 
+// const friends = [
+//     {
+//       id: uuid(),
+//       name: 'Michael',
+//       size: 'Small',
+//       topping1: 'Original Red',
+//       topping2: [
+//         'Pepperoni',
+//         'Diced Tomatos',
+//         'Sausage',
+//       ],
+//       special: "Add more Papper!!!",
+
+//     },
+//   ]
+
 export default function BuildPizza(props) {
-  const { text } = props
 
   const history = useHistory();
 
   const routeToDeliver = () => {
-    history.push("./delivering")
+    history.push("./pizza")
   }
 
   return (
     <div className='container' >
       {/* <p className='item-details'>{text}</p> */}
       {
-        <section id="homeBg" class="bg-img">
+        <section id="homeBg" className="bg-img">
         </section>
       }
 
@@ -33,10 +47,10 @@ export default function BuildPizza(props) {
                     name='role'
                 >
                     <option value=''>- Select an option -</option>
-                    <option value='student'>Student</option>
-                    <option value='alumni'>Alumni</option>
-                    <option value='instructor'>Instructor</option>
-                    <option value='tl'>Team Lead</option>
+                    <option value='small'>Small Pizza</option>
+                    <option value='medium'>Medium Pizza</option>
+                    <option value='large'>Large Pizza</option>
+                    <option value='extraLarge'>Extra-large Pizza</option>
                 </select>
             </label>
         </div>
@@ -231,7 +245,7 @@ export default function BuildPizza(props) {
             </div>
         
         {/* Select */}
-        <div>
+        {/* <div>
             <div className='label-group'>
                     <h2>Choice Of Substitute</h2>
                     <p>Choose up to 1</p>
@@ -244,7 +258,7 @@ export default function BuildPizza(props) {
                     />
                     Gluten Free Crust (+ $100)
             </label> 
-        </div>
+        </div> */}
  
          {/* Select */}
          <div>

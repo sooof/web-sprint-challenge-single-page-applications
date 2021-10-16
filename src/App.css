@@ -81,6 +81,7 @@ h2{
 
 /* material design button */
 .md-button {
+  width: 130px;
   position: relative;
   display: inline-block;
   box-sizing: border-box;
