@@ -112,7 +112,10 @@ export default function App(props){
  
 
 
-
+  useEffect(() => {
+    // 🔥 STEP 9- ADJUST THE STATUS OF `disabled` EVERY TIME `formValues` CHANGES
+    schema.isValid(formValues).then(valid => setDisabled(!valid))
+  }, [formValues])
 
   const formSubmit = (evt) => {
     evt.preventDefault();
@@ -166,6 +169,8 @@ export default function App(props){
             change={inputChange}
             submit={formSubmit}
             stockeat= {stockeat}
+            disabled={disabled}
+            errors={formErrors}
             />
         </Route >
         <Route path='/items-list'> 

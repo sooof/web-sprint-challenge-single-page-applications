@@ -18,7 +18,7 @@ import { useHistory } from 'react-router-dom';
 //   ]
 
 export default function BuildPizza(props) {
-    const {values, change, submit, stockeat} = props
+    const {values, change, submit, stockeat,  disabled, errors} = props
 console.log("BuildPizza = ", values)
 console.log("BuildPizza stockeat= ", stockeat)
 
@@ -313,6 +313,17 @@ stockeat.map( (e)=>{
                     
             </label> 
         </div> */}
+
+        {
+            <div className='errors'>
+            {/* ERRORS HERE */}
+                <div>{errors.name}</div>
+                {/* <div>{errors.email}</div>
+                <div>{errors.role}</div>
+                <div>{errors.civil}</div> */}
+            </div>
+                
+        }
         <div>
             <hr/>
             <label className='order'>
@@ -320,7 +331,7 @@ stockeat.map( (e)=>{
                         type="number"
                     />
                     {/* <button  onClick={routeToDeliver}>Add to Order</button> */}
-                    <button >Add to Order</button>
+                    <button disabled={disabled}>Add to Order</button>
             </label> 
         </div>
                             
