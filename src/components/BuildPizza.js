@@ -31,6 +31,14 @@ stockeat.map( (e)=>{
   const routeToDeliver = () => {
     history.push("./delivering")
   }
+  const onChange = evt => {
+    /* 🔥 FIX THIS SO IT ALSO WORKS WITH CHECKBOXES */
+    const { name, value} = evt.target
+    console.log(evt.target) 
+    console.log(evt.target.value)
+    //const valueToUse = type === 'checkbox' ? checked : value;
+    change(name, value)
+  }
 
   return (
     <div className='container' >
@@ -60,7 +68,7 @@ stockeat.map( (e)=>{
                         type="text"
                         name="name"
                         value={values.name}
-                        onChange={change}
+                        onChange={onChange}
                     />
             </label>
         </div>

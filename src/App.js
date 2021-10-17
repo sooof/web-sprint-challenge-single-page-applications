@@ -11,6 +11,8 @@ import Delivering from './components/Delivering'
 import data from './data'
 import dataLeat from './components/data'
 import DataList from './components/Datalist'
+import schema from './components/validation/formSchema';
+import * as yup from 'yup';
 const initialFormValues = {
       name: '',
       //size: '',
@@ -73,14 +75,25 @@ export default function App(props){
   
   console.log("App setStockLeat = ", stockLeat)
   console.log("App formValues = ", formValues)
-  const inputChange = (evt) => {
-    const {name, value} = evt.target
+
+  const validate = (name, value) => {
+    yup.reach(schema, name)
+      .validate(value)
+      .then(() => setFormErrors({ ...formErrors, [name]: '' }))
+      .catch(err => setFormErrors({ ...formErrors, [name]: err.errors[0] }))
+  }
+
+  const inputChange = (name, value) => {
+    // const {name, value} = evt.target
    // console.log("evt.target = ",evt.target) 
-    console.log("evt.target.value = ", evt.target.value)
+    //console.log("evt.target.value = ", evt.target.value)
+    validate(name, value);
     setFormValues({...formValues, [name]:value})
 
   }
   console.log("App formValues after = ", formValues)
+
+
   // const submit = (evt) => {
   //   evt.preventDefault();
 
@@ -96,25 +109,10 @@ export default function App(props){
   // }
 
 
-  // const postNewFriend = newStockLeat => {
-  //   axios.post('https://reqres.in/api/friends', newStockLeat)
-  //   .then(res => {
-  //     setStockLeat([res.data, ...stockLeat]);
-  //     setFormValues(initialFormValues);
-  //     console.log("App.js: post --- res.data = ", res.data)
-  //   }).catch(err => {
-  //     console.error(err);
-  //     setFormValues(initialFormValues);
-  //   }).finally( ()=>{
-  //     setFormValues(initialFormValues);
-  //   })
-  // }
+ 
 
-  // useEffect(() => {
-  //   // 🔥 STEP 9- ADJUST THE STATUS OF `disabled` EVERY TIME `formValues` CHANGES
-  //   // schema.isValid(formValues).then(valid => setDisabled(!valid))
 
-  // }, [formValues])
+
 
   const formSubmit = (evt) => {
     evt.preventDefault();
@@ -126,19 +124,19 @@ export default function App(props){
       // special: formValues.special.trim()
     }
  
-  // axios.post('https://reqres.in/api/', newStock)
-  // .then(res => {
-  //   setStockeat([newStock, ...stockeat]);
-  //   setFormValues(initialFormValues);
+  axios.post('https://reqres.in/api/stock', newStock)
+  .then(res => {
+    setStockeat([newStock, ...stockeat]);
+    setFormValues(initialFormValues);
     
-  // }).catch(err => {
-  //   console.error(err);
-  // })
+  }).catch(err => {
+    console.error(err);
+  })
 
 
     //setStockeat(stockeat.concat(newStock));
-    setStockeat([newStock, ...stockeat]);
-    setFormValues(initialFormValues);
+    // setStockeat([newStock, ...stockeat]);
+    // setFormValues(initialFormValues);
   }
 
 
