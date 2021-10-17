@@ -13,14 +13,14 @@ import dataLeat from './components/data'
 import DataList from './components/Datalist'
 const initialFormValues = {
       name: '',
-      //size: '',
-      // topping1: '',
-      // topping2: [
-      //   '',
-      //   '',
-      //   '',
-      // ],
-      // special: '',
+      size: '',
+      topping1: '',
+      topping2: [
+        '',
+        '',
+        '',
+      ],
+      special: '',
 
     };
 
@@ -35,26 +35,14 @@ function fetchLeatStock() {
 }
 
 const initialItems= []
-const stocksList = [
-  { name: 'Fido'},
-  { name: 'Tweetie'},
-  { name: 'Goldie' },
-]
-const initialFormErrors = {
-  username: '',
-  // email: '',
-  // role: '',
-  // civil: '',
-}
-const initialDisabled = true
 
 export default function App(props){
   const [stock, setStock] = useState([])
   const [stockLeat, setStockLeat] = useState([])
   const [formValues, setFormValues] = useState(initialFormValues) // object
-  const [formErrors, setFormErrors] = useState(initialFormErrors) // object
-  const [disabled, setDisabled] = useState(initialDisabled)       // boolean
-  const [stockeat, setStockeat] = useState(stocksList)
+  //const [formErrors, setFormErrors] = useState(initialFormErrors) // object
+  //const [disabled, setDisabled] = useState(initialDisabled)       // boolean
+
 
   useEffect(() => {
     fetchStock().then(res => setStock(res.data))
@@ -72,34 +60,31 @@ export default function App(props){
   }, [])
   
   console.log("App setStockLeat = ", stockLeat)
-  console.log("App formValues = ", formValues)
-  const inputChange = (evt) => {
-    const {name, value} = evt.target
-   // console.log("evt.target = ",evt.target) 
-    console.log("evt.target.value = ", evt.target.value)
-    setFormValues({...formValues, [name]:value})
 
-  }
-  console.log("App formValues after = ", formValues)
   // const submit = (evt) => {
   //   evt.preventDefault();
 
-  //   const newStock = {
-  //     name: formValues.name.trim(),
-  //     size: formValues.size.trim(),
-  //     topping1: formValues.topping1.trim(),
-  //     topping2: ['Pepperoni', 'Diced Tomatos', 'Sausage','Black Olives', 'Canadian Bacon', 'Roasted Garlic','Spicy Italian Sausage', 'Artichoke Hearts', 'Grilled Chicker','Three Cheese', 'Onions', 'Pineapple','Green Papper', 'Extra Cheese'].filter(hobby => !!formValues[hobby]),
-  //     special: formValues.special.trim()
-  //   }
-  //   setFormValues(stock.concat(newStock));
-  //   setFormValues(initialFormValues);
-  // }
+    const newStock = {
+      name: formValues.name.trim(),
+      size: formValues.size.trim(),
+      topping1: formValues.topping1.trim(),
+      topping2: ['Pepperoni', 'Diced Tomatos', 'Sausage','Black Olives', 'Canadian Bacon', 'Roasted Garlic','Spicy Italian Sausage', 'Artichoke Hearts', 'Grilled Chicker','Three Cheese', 'Onions', 'Pineapple','Green Papper', 'Extra Cheese'].filter(hobby => !!formValues[hobby]),
+      special: formValues.special.trim()
+    }
+    setFormValues(stock.concat(newStock));
+    setFormValues(initialFormValues);
+  }
 
 
   // const postNewFriend = newStockLeat => {
+  //   // 🔥 STEP 6- IMPLEMENT! ON SUCCESS ADD NEWLY CREATED FRIEND TO STATE
+  //   //    helper to [POST] `newFriend` to `http://buddies.com/api/friends`
+  //   //    and regardless of success or failure, the form should reset
   //   axios.post('https://reqres.in/api/friends', newStockLeat)
   //   .then(res => {
+
   //     setStockLeat([res.data, ...stockLeat]);
+
   //     setFormValues(initialFormValues);
   //     console.log("App.js: post --- res.data = ", res.data)
   //   }).catch(err => {
@@ -116,30 +101,19 @@ export default function App(props){
 
   // }, [formValues])
 
-  const formSubmit = (evt) => {
-    evt.preventDefault();
-    const newStock = {
-      name: formValues.name.trim(),
-      // size: formValues.size.trim(),
-      // topping1: formValues.topping1.trim(),
-      // topping2: ['Pepperoni', 'Diced Tomatos', 'Sausage','Black Olives', 'Canadian Bacon', 'Roasted Garlic','Spicy Italian Sausage', 'Artichoke Hearts', 'Grilled Chicker','Three Cheese', 'Onions', 'Pineapple','Green Papper', 'Extra Cheese'].filter(hobby => !!formValues[hobby]),
-      // special: formValues.special.trim()
-    }
- 
-  // axios.post('https://reqres.in/api/', newStock)
-  // .then(res => {
-  //   setStockeat([newStock, ...stockeat]);
-  //   setFormValues(initialFormValues);
-    
-  // }).catch(err => {
-  //   console.error(err);
-  // })
-
-
-    //setStockeat(stockeat.concat(newStock));
-    setStockeat([newStock, ...stockeat]);
-    setFormValues(initialFormValues);
-  }
+  // const formSubmit = () => {
+  //   const newFriend = {
+  //     name: formValues.name.trim(),
+  //     email: formValues.email.trim(),
+  //     role: formValues.role.trim(),
+  //     civil: formValues.civil.trim(),
+  //     // 🔥 STEP 7- WHAT ABOUT HOBBIES?
+  //     hobbies: ['hiking', 'reading', 'coding'].filter(hobby => !!formValues[hobby])
+  //   }
+  //   console.log("App.js newFriend = ", newFriend)
+  //   postNewFriend(newFriend);
+  //   // 🔥 STEP 8- POST NEW FRIEND USING HELPER
+  // }
 
 
   return (
@@ -165,9 +139,6 @@ export default function App(props){
         <Route path='/pizza'> 
             <BuildPizza 
             values={formValues}
-            change={inputChange}
-            submit={formSubmit}
-            stockeat= {stockeat}
             />
         </Route >
         <Route path='/items-list'> 
@@ -186,4 +157,4 @@ export default function App(props){
     </div>
  
   );
-};
+}

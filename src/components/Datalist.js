@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from 'react'
 // We'll need a Link and the useRouteMatch hook from 'react-router-dom'
 import { Link, useRouteMatch } from 'react-router-dom';
-import dataLeat from './data'
+// import dataLeat from './data'
 
-function fetchLeatStock() {
-    // fetchStock simulates getting data through axios.get(<URL>)
-    return Promise.resolve({ success: true, dataLeat })
-  }
+// function fetchLeatStock() {
+//     // fetchStock simulates getting data through axios.get(<URL>)
+//     return Promise.resolve({ success: true, dataLeat })
+//   }
 
 
 export default function ItemsList(props) {
-    const [items, setItems] = useState([])
+    // const [items, setItems] = useState([])
 
-//   const { items } = props
+  const { items } = props
 
 
-  useEffect(() => {
+//   useEffect(() => {
     
-    fetchLeatStock().then(res => {
-      console.log("App setStockLeat res.data = ", res.dataLeat)
-      setItems(res.dataLeat)
-    })
-  }, [])
+//     fetchLeatStock().then(res => {
+//       console.log("App setStockLeat res.data = ", res.dataLeat)
+//       setItems(res.dataLeat)
+//     })
+//   }, [])
   
   console.log("App setStockLeat = ", items)
 

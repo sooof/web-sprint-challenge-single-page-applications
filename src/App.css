@@ -124,6 +124,7 @@ h2{
   width: 95%;
 }
 
+
 label {
   display: flex;
   margin-bottom: 16px;
@@ -140,6 +141,11 @@ label {
 }
 .label-group h2,p{
   text-align: start;
+  margin-left: 15px;
+}
+.inputName label input{
+  width: 50%;
+  height: 40px;
   margin-left: 15px;
 }
 select{
@@ -200,6 +206,7 @@ label {
 .order button{
   width: 80%;
 }
+
 
 
 @keyframes App-logo-spin {

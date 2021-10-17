@@ -18,11 +18,18 @@ import { useHistory } from 'react-router-dom';
 //   ]
 
 export default function BuildPizza(props) {
+    const {values, change, submit, stockeat} = props
+console.log("BuildPizza = ", values)
+console.log("BuildPizza stockeat= ", stockeat)
+
+stockeat.map( (e)=>{
+    console.log(e.name)
+})
 
   const history = useHistory();
 
   const routeToDeliver = () => {
-    history.push("./pizza")
+    history.push("./delivering")
   }
 
   return (
@@ -32,19 +39,42 @@ export default function BuildPizza(props) {
         <section id="homeBg" className="bg-img">
         </section>
       }
+      {
+          stockeat.map((va) => (
+            <div> 
+                name is {va.name}
+            </div>
+          )
+          )}
 
-        <form className='form container' >
+        <form className='form container' onSubmit={submit}>
             <h1>Build Your Own Pizza</h1>
+        {/* Name */}
+        <div className='inputName'>
+            <div className='label-group'>
+                    <h2>Input you name </h2>
+                    <p>Required</p>
+            </div>
+            <label >
+                    <input
+                        type="text"
+                        name="name"
+                        value={values.name}
+                        onChange={change}
+                    />
+            </label>
+        </div>
 
         {/* Select */}
-        <div>
+        {/* <div>
             <div className='label-group'>
                     <h2>Choice Of Size</h2>
                     <p>Required</p>
             </div>
             <label >
                 <select
-                    name='role'
+                    name='size'
+                    value=""
                 >
                     <option value=''>- Select an option -</option>
                     <option value='small'>Small Pizza</option>
@@ -54,9 +84,9 @@ export default function BuildPizza(props) {
                 </select>
             </label>
         </div>
-           
+            */}
         {/* Redio */}
-        <div>
+        {/* <div>
             <div className='label-group'>
                     <h2>Choice Of Souce</h2>
                     <p>Required</p>
@@ -64,7 +94,7 @@ export default function BuildPizza(props) {
             <label className='radio'>
             <input 
                 type="radio"
-                name="civil"
+                name="topping1"
                 value="Original Red"
             />
             Original Red
@@ -72,7 +102,7 @@ export default function BuildPizza(props) {
             <label className='radio'>
             <input
                 type="radio"
-                name="civil"
+                name="topping1"
                 value="Garlic Ranch"
             />
             Garlic Ranch
@@ -80,7 +110,7 @@ export default function BuildPizza(props) {
             <label className='radio'>
             <input 
                 type="radio"
-                name="civil"
+                name="topping1"
                 value="BBQ Souce"
             />
             BBQ Souce
@@ -88,14 +118,14 @@ export default function BuildPizza(props) {
             <label className='radio'>
             <input
                 type="radio"
-                name="civil"
+                name="topping1"
                 value="Spinach Alfredo"
             />
             Spinach Alfredo
             </label>
-        </div>
+        </div> */}
         {/* Checkbox */}
-        <div>
+        {/* <div>
             <div className='label-group'>
                     <h2>Add Toppings</h2>
                     <p>Choose up to 10</p>
@@ -106,7 +136,7 @@ export default function BuildPizza(props) {
                     <label className='checkbox'>
                     <input
                         type="checkbox"
-                        name="Pepperoni"
+                        name="topping2"
                         value=""
                     />
                     Pepperoni
@@ -116,7 +146,7 @@ export default function BuildPizza(props) {
                     <label className='checkbox'>
                     <input
                         type="checkbox"
-                        name="Diced Tomatos"
+                        name="topping2"
                         value=""
                     />
                     Diced Tomatos
@@ -126,7 +156,7 @@ export default function BuildPizza(props) {
                     <label className='checkbox'>
                     <input
                         type="checkbox"
-                        name="toppings"
+                        name="topping2"
                         value="Sausage"
                     />
                     Sausage
@@ -136,7 +166,7 @@ export default function BuildPizza(props) {
                     <label className='checkbox'>
                     <input
                         type="checkbox"
-                        name="Black Olives"
+                        name="topping2"
                         value=""
                     />
                     Black Olives
@@ -146,7 +176,7 @@ export default function BuildPizza(props) {
                     <label className='checkbox'>
                     <input
                         type="checkbox"
-                        name="Canadian Bacon"
+                        name="topping2"
                         value=""
                     />
                     Canadian Bacon
@@ -156,7 +186,7 @@ export default function BuildPizza(props) {
                     <label className='checkbox'>
                     <input
                         type="checkbox"
-                        name="Roasted Garlic"
+                        name="topping2"
                         value=""
                     />
                     Roasted Garlic
@@ -166,7 +196,7 @@ export default function BuildPizza(props) {
                     <label className='checkbox'>
                     <input
                         type="checkbox"
-                        name="Spicy Italian Sausage"
+                        name="topping2"
                         value=""
                     />
                     Spicy Italian Sausage
@@ -176,7 +206,7 @@ export default function BuildPizza(props) {
                     <label className='checkbox'>
                     <input
                         type="checkbox"
-                        name="Artichoke Hearts"
+                        name="topping2"
                         value=""
                     />
                     Artichoke Hearts
@@ -186,7 +216,7 @@ export default function BuildPizza(props) {
                     <label className='checkbox'>
                     <input
                         type="checkbox"
-                        name="Grilled Chicker"
+                        name="topping2"
                         value=""
                     />
                     Grilled Chicker
@@ -196,7 +226,7 @@ export default function BuildPizza(props) {
                     <label className='checkbox'>
                     <input
                         type="checkbox"
-                        name="Three Cheese"
+                        name="topping2"
                         value=""
                     />
                     Three Cheese
@@ -206,7 +236,7 @@ export default function BuildPizza(props) {
                     <label className='checkbox'>
                     <input
                         type="checkbox"
-                        name="Onions"
+                        name="topping2"
                         value=""
                     />
                     Onions
@@ -216,7 +246,7 @@ export default function BuildPizza(props) {
                     <label className='checkbox'>
                     <input
                         type="checkbox"
-                        name="Pineapple"
+                        name="topping2"
                         value=""
                     />
                     Pineapple
@@ -226,7 +256,7 @@ export default function BuildPizza(props) {
                     <label className='checkbox'>
                     <input
                         type="checkbox"
-                        name="Green Papper"
+                        name="topping2"
                         value=""
                     />
                     Green Papper
@@ -236,14 +266,14 @@ export default function BuildPizza(props) {
                     <label className='checkbox'>
                     <input
                         type="checkbox"
-                        name="Extra Cheese"
+                        name="topping2"
                         value=""
                     />
                     Extra Cheese
                     </label> 
                 </div>
             </div>
-        
+        </div> */}
         {/* Select */}
         {/* <div>
             <div className='label-group'>
@@ -259,35 +289,30 @@ export default function BuildPizza(props) {
                     Gluten Free Crust (+ $100)
             </label> 
         </div> */}
- 
-         {/* Select */}
-         <div>
+
+        {/* Select */}
+        {/* <div>
             <div className='label-group'>
                     <h2>Special Instructions</h2>
-                    {/* <p>Choose up to 1</p> */}
             </div>
             <label className='speciaSpecial'>
                     <input
                         type="text"
-                        name="Extra Cheese"
+                        name="special"
                         placeholder="Anthing else you'd like to add?"
                         // value=""
                     />
                     
             </label> 
-        </div>
-
-        </div>
-
+        </div> */}
         <div>
             <hr/>
             <label className='order'>
                     <input
                         type="number"
-                        name="order"
-                        // value=""
                     />
-                    <button  onClick={routeToDeliver}>Add to Order</button>
+                    {/* <button  onClick={routeToDeliver}>Add to Order</button> */}
+                    <button >Add to Order</button>
             </label> 
         </div>
                             
