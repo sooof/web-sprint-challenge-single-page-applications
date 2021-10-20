@@ -163,12 +163,12 @@ console.log("BuildPizza disabled = ", disabled)
             </div>
 
             <div className='checkboxs'>
-                {/* <div className='box'> 
+                <div className='box'> 
                     <label className='checkboxl'>
                     <input
                         type="checkbox"
-                        name='pepperoni'
-                        checked={values['pepperoni']}
+                        name='Pepperoni'
+                        checked={values['Pepperoni']}
                         onChange={onChange}
                     />
                     Pepperoni
@@ -178,13 +178,13 @@ console.log("BuildPizza disabled = ", disabled)
                     <label className='checkboxl'>
                     <input
                         type="checkbox"
-                        name='dicedtomatos'
-                        checked={values['dicedtomatos']}
+                        name='Diced Tomatos'
+                        checked={values['Diced Tomatos']}
                         onChange={onChange}
                     />
                     Diced Tomatos
                     </label> 
-                </div> */}
+                </div>
                 <div className='box'> 
                     <label className='checkboxl'>
                     <input
@@ -207,11 +207,11 @@ console.log("BuildPizza disabled = ", disabled)
                     Black Olives
                     </label> 
                 </div>
-               {/*  <div className='box'> 
+                <div className='box'> 
                     <label className='checkboxl'>
                     <input
                         type="checkbox"
-                        name='topping2'
+                        name='Canadian Bacon'
                         checked={values['Canadian Bacon']}
                         onChange={onChange}
                     />
@@ -222,7 +222,7 @@ console.log("BuildPizza disabled = ", disabled)
                     <label className='checkboxl'>
                     <input
                         type="checkbox"
-                        name='topping2'
+                        name='Roasted Garlic'
                         checked={values['Roasted Garlic']}
                         onChange={onChange}
                     />
@@ -233,7 +233,7 @@ console.log("BuildPizza disabled = ", disabled)
                     <label className='checkboxl'>
                     <input
                         type="checkbox"
-                        name='topping2'
+                        name='Spicy Italian Sausage'
                         checked={values['Spicy Italian Sausage']}
                         onChange={onChange}
                     />
@@ -244,7 +244,7 @@ console.log("BuildPizza disabled = ", disabled)
                     <label className='checkboxl'>
                     <input
                         type="checkbox"
-                        name='topping2'
+                        name='Artichoke Hearts'
                         checked={values['Artichoke Hearts']}
                         onChange={onChange}
                     />
@@ -255,7 +255,7 @@ console.log("BuildPizza disabled = ", disabled)
                     <label className='checkboxl'>
                     <input
                         type="checkbox"
-                        name='topping2'
+                        name='Grilled Chicker'
                         checked={values['Grilled Chicker']}
                         onChange={onChange}
                     />
@@ -266,7 +266,7 @@ console.log("BuildPizza disabled = ", disabled)
                     <label className='checkboxl'>
                     <input
                         type="checkbox"
-                        name='topping2'
+                        name='Three Cheese'
                         checked={values['Three Cheese']}
                         onChange={onChange}
                     />
@@ -277,7 +277,7 @@ console.log("BuildPizza disabled = ", disabled)
                     <label className='checkboxl'>
                     <input
                         type="checkbox"
-                        name='topping2'
+                        name='Onions'
                         checked={values['Onions']}
                         onChange={onChange}
                     />
@@ -288,7 +288,7 @@ console.log("BuildPizza disabled = ", disabled)
                     <label className='checkboxl'>
                     <input
                         type="checkbox"
-                        name='topping2'
+                        name='Pineapple'
                         checked={values['Pineapple']}
                         onChange={onChange}
                     />
@@ -299,7 +299,7 @@ console.log("BuildPizza disabled = ", disabled)
                     <label className='checkboxl'>
                     <input
                         type="checkbox"
-                        name='topping2'
+                        name='Green Papper'
                         checked={values['Green Papper']}
                         onChange={onChange}
                     />
@@ -310,13 +310,13 @@ console.log("BuildPizza disabled = ", disabled)
                     <label className='checkboxl'>
                     <input
                         type="checkbox"
-                        name='topping2'
+                        name='Extra Cheese'
                         checked={values['Extra Cheese']}
                         onChange={onChange}
                     />
                     Extra Cheese
                     </label> 
-                </div> */}
+                </div>
             </div>
         </div>
         {/* Select */}

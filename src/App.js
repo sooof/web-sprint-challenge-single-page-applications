@@ -36,11 +36,20 @@ const initialFormValuestest = {
       ///// RADIO BUTTONS /////
       special: '',
       ///// CHECKBOXES /////
-      // ['pepperoni']: false,
-      // ['dicedtomatos']: false,
+      ['Pepperoni']: false,
+      ['Diced Tomatos']: false,
       ['Sausage']:false,
       ['Black Olives']:false,
-      // coding: false,
+      ['Canadian Bacon']: false, 
+      ['Roasted Garlic']: false,
+      ['Spicy Italian Sausage']:false, 
+      ['Artichoke Hearts']: false, 
+      ['Grilled Chicker']: false,
+      ['Three Cheese']: false, 
+      ['Onions']: false, 
+      ['Pineapple']: false, 
+      ['Green Papper']: false,
+      ['Extra Cheese']: false, 
     }
 
 function fetchStock() {
@@ -110,7 +119,6 @@ export default function App(props){
     console.log("App inputChange disabled = ", disabled)
     validate(name, value);
     setFormValues({...formValues, [name]:value})
-
   }
   console.log("App formValues after = ", formValues)
 
@@ -146,7 +154,7 @@ export default function App(props){
       name: formValues.name.trim(),
       size: formValues.size.trim(),
       topping1: formValues.topping1.trim(),
-      topping2: ['Sausage', 'Black Olives'].filter(topping => !!formValues[topping]),
+      topping2: ['Pepperoni', 'Diced Tomatos', 'Sausage', 'Black Olives', 'Canadian Bacon', 'Roasted Garlic','Spicy Italian Sausage', 'Artichoke Hearts', 'Grilled Chicker','Three Cheese', 'Onions', 'Pineapple','Green Papper', 'Extra Cheese'].filter(topping => !!formValues[topping]),
       // topping2: ['Pepperoni', 'Diced Tomatos', 'Sausage','Black Olives', 'Canadian Bacon', 'Roasted Garlic','Spicy Italian Sausage', 'Artichoke Hearts', 'Grilled Chicker','Three Cheese', 'Onions', 'Pineapple','Green Papper', 'Extra Cheese'].filter(topping => !!formValues[topping]),
       special: formValues.special.trim()
     }

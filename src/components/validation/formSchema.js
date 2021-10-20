@@ -14,14 +14,25 @@ const formSchema = yup.object().shape({
     topping1: yup
         .string()
         .oneOf(['Original Red', 'Garlic Ranch', 'BBQ Souce', 'Spinach Alfredo'], 'topping1 is required!'),
-    // topping2: yup.array().min(1, "must be 1 array long"),
+    topping2: yup.array().min(1, "must be 1 array long"),
         // topping2: yup
     //     .string(),
         // .oneOf(['Pepperoni', 'Diced Tomatos'], 'topping2 status is required!'),
-    // ['pepperoni']:yup.boolean(),
-    // ['dicedtomatos']:yup.boolean(),
+    ['Pepperoni']:yup.boolean(),
+    ['Diced Tomatos']:yup.boolean(),
     ['Sausage']:   yup.boolean(),
     ['Black Olives']:  yup.boolean(),
+    ['Canadian Bacon']: yup.boolean(), 
+    ['Roasted Garlic']: yup.boolean(),
+    ['Spicy Italian Sausage']:yup.boolean(), 
+    ['Artichoke Hearts']: yup.boolean(), 
+    ['Grilled Chicker']: yup.boolean(),
+    ['Three Cheese']:yup.boolean(), 
+
+    ['Onions']:yup.boolean(), 
+    ['Pineapple']: yup.boolean(), 
+    ['Green Papper']: yup.boolean(),
+    ['Extra Cheese']:yup.boolean(), 
     // topping2: yup
     //     .string()
     //     .oneOf(['Pepperoni', 'Diced Tomatos', 'Sausage','Black Olives', 'Canadian Bacon', 'Roasted Garlic','Spicy Italian Sausage', 'Artichoke Hearts', 'Grilled Chicker','Three Cheese', 'Onions', 'Pineapple','Green Papper', 'Extra Cheese'], 'Role is required!'),
