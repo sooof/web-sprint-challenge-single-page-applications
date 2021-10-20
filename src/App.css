@@ -79,6 +79,18 @@ h2{
 
 /* material design button */
 
+.container {
+  border: 1px solid rgb(210, 210, 210);
+  border-radius: 6px;
+  box-shadow: 0px 1px 6px -2px rgb(128, 127, 127);
+  margin: 16px 8px;
+  padding: 16px;
+  background-color: white;
+}
+.show {
+  text-align: start;
+}
+
 /* material design button */
 .md-button {
   width: 130px;
@@ -156,7 +168,7 @@ select{
 label {
   margin-top: 12px;
 }
-.radio{
+.radiol{
   display: flex;
   flex-direction: wrap;
   justify-content:start;
@@ -171,7 +183,7 @@ label {
   
   /* border:1px solid grey; */
 }
-.checkbox {
+.checkboxl {
   display: flex;
   flex-direction: wrap;
   justify-content:start;

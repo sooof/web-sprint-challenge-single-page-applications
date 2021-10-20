@@ -19,12 +19,13 @@ import { useHistory } from 'react-router-dom';
 
 export default function BuildPizza(props) {
     const {values, change, submit, stockeat,  disabled, errors} = props
-console.log("BuildPizza = ", values)
-console.log("BuildPizza stockeat= ", stockeat)
+// console.log("BuildPizza = ", values)
+// console.log("BuildPizza stockeat= ", stockeat)
+// stockeat.map( (e)=>{
+//     console.log(e.name)
+// })
 
-stockeat.map( (e)=>{
-    console.log(e.name)
-})
+console.log("BuildPizza disabled = ", disabled)
 
   const history = useHistory();
 
@@ -35,7 +36,7 @@ stockeat.map( (e)=>{
     /* 🔥 FIX THIS SO IT ALSO WORKS WITH CHECKBOXES */
     const { name, value} = evt.target
     console.log(evt.target) 
-    console.log(evt.target.value)
+    console.log("BuildPizza ###====",evt.target.value)
     //const valueToUse = type === 'checkbox' ? checked : value;
     change(name, value)
   }
@@ -49,8 +50,20 @@ stockeat.map( (e)=>{
       }
       {
           stockeat.map((va) => (
-            <div> 
-                name is {va.name}
+            <div className='container show'> 
+               <h3> name is {va.name}</h3>
+               <ul> 
+               <li> size is {va.size}</li>
+               <li> size is {va.topping1}</li>
+                <ul> 
+                    {
+                         va.topping2.map( (t2,index )=> (<li key={index}>{t2} </li>))
+                    }
+                </ul>
+               <li> special is {va.special}</li>
+
+               </ul>
+
             </div>
           )
           )}
@@ -74,7 +87,7 @@ stockeat.map( (e)=>{
         </div>
 
         {/* Select */}
-        {/* <div>
+        <div>
             <div className='label-group'>
                     <h2>Choice Of Size</h2>
                     <p>Required</p>
@@ -82,7 +95,8 @@ stockeat.map( (e)=>{
             <label >
                 <select
                     name='size'
-                    value=""
+                    value={values.size}
+                    onChange={onChange}
                 >
                     <option value=''>- Select an option -</option>
                     <option value='small'>Small Pizza</option>
@@ -92,196 +106,218 @@ stockeat.map( (e)=>{
                 </select>
             </label>
         </div>
-            */}
+           
         {/* Redio */}
-        {/* <div>
+        <div>
             <div className='label-group'>
                     <h2>Choice Of Souce</h2>
                     <p>Required</p>
             </div>
-            <label className='radio'>
+            <label className='radiol'>
             <input 
                 type="radio"
                 name="topping1"
-                value="Original Red"
+                value='Original Red'
+                onChange={onChange}
+                checked={values.topping1 === 'Original Red'}
             />
             Original Red
             </label>
-            <label className='radio'>
+            <label className='radiol'>
             <input
                 type="radio"
                 name="topping1"
-                value="Garlic Ranch"
+                value='Garlic Ranch'
+                onChange={onChange}
+                checked={values.topping1 === 'Garlic Ranch'}
             />
             Garlic Ranch
             </label>
-            <label className='radio'>
+            <label className='radiol'>
             <input 
                 type="radio"
                 name="topping1"
-                value="BBQ Souce"
+                value='BBQ Souce'
+                onChange={onChange}
+                checked={values.topping1 === 'BBQ Souce'}
             />
             BBQ Souce
             </label>
-            <label className='radio'>
+            <label className='radiol'>
             <input
                 type="radio"
                 name="topping1"
                 value="Spinach Alfredo"
+                onChange={onChange}
+                checked={values.topping1 === 'Spinach Alfredo'}
             />
             Spinach Alfredo
             </label>
-        </div> */}
+        </div>
         {/* Checkbox */}
-        {/* <div>
+        <div>
             <div className='label-group'>
                     <h2>Add Toppings</h2>
                     <p>Choose up to 10</p>
             </div>
 
             <div className='checkboxs'>
-                <div className='box'> 
-                    <label className='checkbox'>
+                {/* <div className='box'> 
+                    <label className='checkboxl'>
                     <input
                         type="checkbox"
-                        name="topping2"
-                        value=""
+                        name='pepperoni'
+                        checked={values['pepperoni']}
+                        onChange={onChange}
                     />
                     Pepperoni
                     </label> 
                 </div>
                 <div className='box'> 
-                    <label className='checkbox'>
+                    <label className='checkboxl'>
                     <input
                         type="checkbox"
-                        name="topping2"
-                        value=""
+                        name='dicedtomatos'
+                        checked={values['dicedtomatos']}
+                        onChange={onChange}
                     />
                     Diced Tomatos
                     </label> 
-                </div>
+                </div> */}
                 <div className='box'> 
-                    <label className='checkbox'>
+                    <label className='checkboxl'>
                     <input
                         type="checkbox"
-                        name="topping2"
-                        value="Sausage"
+                        name='Sausage'
+                        checked={values['Sausage']}
+                        onChange={onChange}
                     />
                     Sausage
                     </label> 
                 </div>
                 <div className='box'> 
-                    <label className='checkbox'>
+                    <label className='checkboxl'>
                     <input
                         type="checkbox"
-                        name="topping2"
-                        value=""
+                        name='Black Olives'
+                        checked={values['Black Olives']}
+                        onChange={onChange}
                     />
                     Black Olives
                     </label> 
                 </div>
-                <div className='box'> 
-                    <label className='checkbox'>
+               {/*  <div className='box'> 
+                    <label className='checkboxl'>
                     <input
                         type="checkbox"
-                        name="topping2"
-                        value=""
+                        name='topping2'
+                        checked={values['Canadian Bacon']}
+                        onChange={onChange}
                     />
                     Canadian Bacon
                     </label> 
                 </div>
                 <div className='box'> 
-                    <label className='checkbox'>
+                    <label className='checkboxl'>
                     <input
                         type="checkbox"
-                        name="topping2"
-                        value=""
+                        name='topping2'
+                        checked={values['Roasted Garlic']}
+                        onChange={onChange}
                     />
                     Roasted Garlic
                     </label> 
                 </div>
                 <div className='box'> 
-                    <label className='checkbox'>
+                    <label className='checkboxl'>
                     <input
                         type="checkbox"
-                        name="topping2"
-                        value=""
+                        name='topping2'
+                        checked={values['Spicy Italian Sausage']}
+                        onChange={onChange}
                     />
                     Spicy Italian Sausage
                     </label> 
                 </div>
                 <div className='box'> 
-                    <label className='checkbox'>
+                    <label className='checkboxl'>
                     <input
                         type="checkbox"
-                        name="topping2"
-                        value=""
+                        name='topping2'
+                        checked={values['Artichoke Hearts']}
+                        onChange={onChange}
                     />
                     Artichoke Hearts
                     </label> 
                 </div>
                 <div className='box'> 
-                    <label className='checkbox'>
+                    <label className='checkboxl'>
                     <input
                         type="checkbox"
-                        name="topping2"
-                        value=""
+                        name='topping2'
+                        checked={values['Grilled Chicker']}
+                        onChange={onChange}
                     />
                     Grilled Chicker
                     </label> 
                 </div>
                 <div className='box'> 
-                    <label className='checkbox'>
+                    <label className='checkboxl'>
                     <input
                         type="checkbox"
-                        name="topping2"
-                        value=""
+                        name='topping2'
+                        checked={values['Three Cheese']}
+                        onChange={onChange}
                     />
                     Three Cheese
                     </label> 
                 </div>
                 <div className='box'> 
-                    <label className='checkbox'>
+                    <label className='checkboxl'>
                     <input
                         type="checkbox"
-                        name="topping2"
-                        value=""
+                        name='topping2'
+                        checked={values['Onions']}
+                        onChange={onChange}
                     />
                     Onions
                     </label> 
                 </div>
                 <div className='box'> 
-                    <label className='checkbox'>
+                    <label className='checkboxl'>
                     <input
                         type="checkbox"
-                        name="topping2"
-                        value=""
+                        name='topping2'
+                        checked={values['Pineapple']}
+                        onChange={onChange}
                     />
                     Pineapple
                     </label> 
                 </div>
                 <div className='box'> 
-                    <label className='checkbox'>
+                    <label className='checkboxl'>
                     <input
                         type="checkbox"
-                        name="topping2"
-                        value=""
+                        name='topping2'
+                        checked={values['Green Papper']}
+                        onChange={onChange}
                     />
                     Green Papper
                     </label> 
                 </div>
                 <div className='box'> 
-                    <label className='checkbox'>
+                    <label className='checkboxl'>
                     <input
                         type="checkbox"
-                        name="topping2"
-                        value=""
+                        name='topping2'
+                        checked={values['Extra Cheese']}
+                        onChange={onChange}
                     />
                     Extra Cheese
                     </label> 
-                </div>
+                </div> */}
             </div>
-        </div> */}
+        </div>
         {/* Select */}
         {/* <div>
             <div className='label-group'>
@@ -298,8 +334,8 @@ stockeat.map( (e)=>{
             </label> 
         </div> */}
 
-        {/* Select */}
-        {/* <div>
+        {/* special */}
+        <div>
             <div className='label-group'>
                     <h2>Special Instructions</h2>
             </div>
@@ -307,20 +343,24 @@ stockeat.map( (e)=>{
                     <input
                         type="text"
                         name="special"
+                        value={values.special}
+                        onChange={onChange}
                         placeholder="Anthing else you'd like to add?"
                         // value=""
                     />
                     
             </label> 
-        </div> */}
+        </div>
 
         {
             <div className='errors'>
             {/* ERRORS HERE */}
                 <div>{errors.name}</div>
-                {/* <div>{errors.email}</div>
-                <div>{errors.role}</div>
-                <div>{errors.civil}</div> */}
+                <div>{errors.size}</div>
+                <div>{errors.topping1}</div>
+                <div>{errors.topping2}</div>
+                {/* <div>{errors.role}</div> */}
+                <div>{errors.special}</div>
             </div>
                 
         }
@@ -331,7 +371,7 @@ stockeat.map( (e)=>{
                         type="number"
                     />
                     {/* <button  onClick={routeToDeliver}>Add to Order</button> */}
-                    <button disabled={disabled}>Add to Order</button>
+                    <button >Add to Order</button>
             </label> 
         </div>
                             

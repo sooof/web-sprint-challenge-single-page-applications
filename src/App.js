@@ -13,18 +13,35 @@ import dataLeat from './components/data'
 import DataList from './components/Datalist'
 import schema from './components/validation/formSchema';
 import * as yup from 'yup';
-const initialFormValues = {
+const initialFormValuestest = {
       name: '',
-      //size: '',
-      // topping1: '',
-      // topping2: [
-      //   '',
-      //   '',
-      //   '',
-      // ],
-      // special: '',
-
+      size: '',
+      topping1: '',
+      
+      ///// CHECKBOXES /////
+      // ['hiking']: false,
+      // ['reading']: false,
+      // ['Pepperoni']: false,
+      // ['Diced Tomatos']: false,
+      // ['Pepperoni']: false, ['Diced Tomatos']: false, ['Sausage']: false,['Black Olives']: false, 
+      // ['Canadian Bacon']: false, ['Roasted Garlic']: false,['Spicy Italian Sausage']:false, ['Artichoke Hearts']:false, ['Grilled Chicker']:false,['Three Cheese']:false, ['Onions']:false, ['Pineapple']:false,['Green Papper']:false, ['Extra Cheese'] :false,
+      special: '',
     };
+    const initialFormValues = {
+      ///// TEXT INPUTS /////
+      name: '',
+      size: '',
+      ///// DROPDOWN /////
+      topping1: '',
+      ///// RADIO BUTTONS /////
+      special: '',
+      ///// CHECKBOXES /////
+      // ['pepperoni']: false,
+      // ['dicedtomatos']: false,
+      ['Sausage']:false,
+      ['Black Olives']:false,
+      // coding: false,
+    }
 
 function fetchStock() {
   // fetchStock simulates getting data through axios.get(<URL>)
@@ -38,15 +55,16 @@ function fetchLeatStock() {
 
 const initialItems= []
 const stocksList = [
-  { name: 'Fido'},
-  { name: 'Tweetie'},
-  { name: 'Goldie' },
+  { name: 'Fido', size: 'small',topping1: 'Original Red',topping2:[ 'Diced Tomatos'], special: 'more'},
+  { name: 'Tweetie', size: 'small',topping1: 'Garlic Ranch', topping2:['Pepperoni'],special: 'get salt',},
+  { name: 'Goldie', size: 'small',topping1: 'BBQ Souce',topping2:['Pepperoni', 'Diced Tomatos'],special: 'get big', },
 ]
 const initialFormErrors = {
   username: '',
-  // email: '',
-  // role: '',
-  // civil: '',
+  size: '',
+  topping1: '',
+  // topping2: ['','','','','','','','','','','','','',''],
+  special: '',
 }
 const initialDisabled = true
 
@@ -73,10 +91,12 @@ export default function App(props){
     })
   }, [])
   
-  console.log("App setStockLeat = ", stockLeat)
-  console.log("App formValues = ", formValues)
+  // console.log("App setStockLeat = ", stockLeat)
+  // console.log("App formValues = ", formValues)
+  console.log("App disabled = ", disabled)
 
   const validate = (name, value) => {
+    console.log("App validate disabled = ", disabled)
     yup.reach(schema, name)
       .validate(value)
       .then(() => setFormErrors({ ...formErrors, [name]: '' }))
@@ -87,7 +107,8 @@ export default function App(props){
     // const {name, value} = evt.target
    // console.log("evt.target = ",evt.target) 
     //console.log("evt.target.value = ", evt.target.value)
-    validate(name, value);
+    console.log("App inputChange disabled = ", disabled)
+    //validate(name, value);
     setFormValues({...formValues, [name]:value})
 
   }
@@ -109,24 +130,27 @@ export default function App(props){
   // }
 
 
- 
+
 
 
   useEffect(() => {
-    // 🔥 STEP 9- ADJUST THE STATUS OF `disabled` EVERY TIME `formValues` CHANGES
+    // STEP 9- ADJUST THE STATUS OF `disabled` EVERY TIME `formValues` CHANGES
     schema.isValid(formValues).then(valid => setDisabled(!valid))
   }, [formValues])
+
+  //console.log("App.js filter===", ['Pepperoni', 'Diced Tomatos'].filter(topping2 => !!'Pepperoni'))
 
   const formSubmit = (evt) => {
     evt.preventDefault();
     const newStock = {
       name: formValues.name.trim(),
-      // size: formValues.size.trim(),
-      // topping1: formValues.topping1.trim(),
-      // topping2: ['Pepperoni', 'Diced Tomatos', 'Sausage','Black Olives', 'Canadian Bacon', 'Roasted Garlic','Spicy Italian Sausage', 'Artichoke Hearts', 'Grilled Chicker','Three Cheese', 'Onions', 'Pineapple','Green Papper', 'Extra Cheese'].filter(hobby => !!formValues[hobby]),
-      // special: formValues.special.trim()
+      size: formValues.size.trim(),
+      topping1: formValues.topping1.trim(),
+      topping2: ['Sausage', 'Black Olives'].filter(topping => !!formValues[topping]),
+      // topping2: ['Pepperoni', 'Diced Tomatos', 'Sausage','Black Olives', 'Canadian Bacon', 'Roasted Garlic','Spicy Italian Sausage', 'Artichoke Hearts', 'Grilled Chicker','Three Cheese', 'Onions', 'Pineapple','Green Papper', 'Extra Cheese'].filter(topping => !!formValues[topping]),
+      special: formValues.special.trim()
     }
- 
+    
   axios.post('https://reqres.in/api/stock', newStock)
   .then(res => {
     setStockeat([newStock, ...stockeat]);
