@@ -108,7 +108,7 @@ export default function App(props){
    // console.log("evt.target = ",evt.target) 
     //console.log("evt.target.value = ", evt.target.value)
     console.log("App inputChange disabled = ", disabled)
-    //validate(name, value);
+    validate(name, value);
     setFormValues({...formValues, [name]:value})
 
   }

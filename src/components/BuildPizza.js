@@ -34,11 +34,12 @@ console.log("BuildPizza disabled = ", disabled)
   }
   const onChange = evt => {
     /* 🔥 FIX THIS SO IT ALSO WORKS WITH CHECKBOXES */
-    const { name, value} = evt.target
+    const { name, value, type, checked} = evt.target
     console.log(evt.target) 
     console.log("BuildPizza ###====",evt.target.value)
-    //const valueToUse = type === 'checkbox' ? checked : value;
-    change(name, value)
+    const valueToUse = type === 'checkbox' ? checked : value;
+    change(name, valueToUse)
+    // change(name, value)
   }
 
   return (
@@ -371,7 +372,7 @@ console.log("BuildPizza disabled = ", disabled)
                         type="number"
                     />
                     {/* <button  onClick={routeToDeliver}>Add to Order</button> */}
-                    <button >Add to Order</button>
+                    <button disabled={disabled}>Add to Order</button>
             </label> 
         </div>
                             
